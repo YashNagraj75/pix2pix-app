@@ -100,7 +100,7 @@ def load_mnist():
 
 # --- App UI ---
 st.title("Pix2Pix MNIST Generator")
-checkpoint_path = st.text_input("Checkpoint path", "g_epoch_9.pth")
+checkpoint_path = st.text_input("Checkpoint path", "g_epoch_7.pth")
 num = st.selectbox("Select digit to condition on", list(range(10)))
 
 if st.button("Generate Samples"):
