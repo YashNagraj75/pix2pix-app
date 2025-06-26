@@ -112,7 +112,7 @@ if st.button("Generate Samples"):
     x = img.unsqueeze(0).to(device)  # [1,1,28,28]
     # generate 5 samples
     x_cond = x.repeat(5, 1, 1, 1)
-    noise = torch.randn_like(x_cond) * 0.1
+    noise = torch.randn_like(x_cond) * 0.5
     with torch.no_grad():
         gen_imgs = gen(x_cond + noise)
     # denormalize and convert to numpy images
@@ -122,6 +122,4 @@ if st.button("Generate Samples"):
     for i, col in enumerate(cols):
         arr = (imgs_out[i] * 255).astype(np.uint8)
         img_disp = Image.fromarray(arr, mode="L")
-        col.image(img_disp, caption=f"Sample {i + 1}", use_column_width=True)
-
-# EOF
+        col.image(img_disp, caption=f"Sample {i + 1}", use_container_width=True)
